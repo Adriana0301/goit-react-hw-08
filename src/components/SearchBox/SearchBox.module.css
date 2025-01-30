@@ -1,0 +1,13 @@
+.searchBoxInput {
+    border-radius: 8px;
+    padding: 16px;
+    width: 320px;
+
+}
+
+.searchBoxWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}

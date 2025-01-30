@@ -1,0 +1,23 @@
+.contactList {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.contactListItem {
+  /* display: flex; */
+  /* align-items: center;
+  justify-content: center; */
+  margin-top: 20px;
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
+  /* gap: 20px; */
+}
+
+/* .wrapperTriangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
