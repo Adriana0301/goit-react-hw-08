@@ -1,0 +1,14 @@
+.appTitle {
+  text-align: center;
+  color: #14c57c;
+}
+
+.wrapperTriangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+p {
+  color: #14c57c;
+}

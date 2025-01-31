@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+  margin-top: 50px;
+  color: #14c57c;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 4px;
+}
+
+h3 {
+  margin-bottom: 24px;
+}
+
+.fieldForm {
+  border-radius: 8px;
+  padding: 12px;
+  width: 320px;
+  border-color: #6ddfaf;
+}
+
+.fieldForm:active,
+.fieldForm:focus {
+  border-color: #c9fde7;
+}
+
+.formBtn {
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: 120px;
+  background: #14c57c;
+  border: none;
+  color: azure;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.formBtn:hover {
+  background-color: #a3f2d1;
+}
+
+p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}

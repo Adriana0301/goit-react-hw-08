@@ -1,0 +1,17 @@
+.homePageTitle {
+  color: #14c57c;
+}
+
+.homePageContainer {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.homePageText {
+  color: #14c57c;
+}

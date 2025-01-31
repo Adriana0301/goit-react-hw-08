@@ -1,35 +1,34 @@
 .contactFormWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    gap: 8px;
-    border-radius: 8px;
-    border-radius: #14c57c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border-radius: 8px;
+  border-radius: #14c57c;
 }
 
 .contactFormWrapperField {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 .contactForm {
-    border-radius: 8px;
-    padding: 16px;
-    width: 320px;
-
+  border-radius: 8px;
+  padding: 16px;
+  width: 320px;
 }
 
 .contactFormBtn {
-    border-radius: 8px;
-padding: 6px 12px;
-width: 120px;
-background: #14c57c;
-border: none;
-color: azure;
+  border-radius: 8px;
+  padding: 6px 12px;
+  width: 120px;
+  background: #14c57c;
+  border: none;
+  color: azure;
+  cursor: pointer;
 }
 
 .contactFormBtn:hover {
-    background: #009156;
+  background: #009156;
 }

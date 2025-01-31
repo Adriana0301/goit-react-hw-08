@@ -1,14 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import Contact from "./Contact/Contact";
 import s from "./ContactList.module.css";
-import {
-  selectError,
-  selectFilteredContacts,
-  selectLoading,
-} from "../../redux/contactsSlice";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contactsOps";
-import { Triangle } from "react-loader-spinner";
+import { selectFilteredContacts } from "../../redux/contacts/selectors";
+
 const ContactList = () => {
   const contacts = useSelector(selectFilteredContacts);
   return (

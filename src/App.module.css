@@ -4,13 +4,3 @@
   padding: 2rem;
   text-align: center;
 }
-
-.appTitle {
-  text-align: center;
-}
-
-.wrapperTriangle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}

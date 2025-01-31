@@ -1,43 +1,52 @@
-import ContactForm from "./components/ContactForm/ContactForm.jsx";
-import SearchBox from "./components/SearchBox/SearchBox.jsx";
-import ContactList from "./components/ContactList/ContactList.jsx";
-import s from "./App.module.css";
-import { selectError, selectLoading } from "./redux/contactsSlice.js";
-import { fetchContacts } from "./redux/contactsOps.js";
 import { useDispatch, useSelector } from "react-redux";
-import { Triangle } from "react-loader-spinner";
+// import { Triangle } from "react-loader-spinner";
 import { useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import NotFound from "./pages/NotFound.jsx";
+import ContactsPage from "./pages/ContactsPage.jsx";
+import Layout from "./Layout.jsx";
+import RegistrationPage from "./pages/RegistrationPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
+import { refreshUserThunk } from "./redux/auth/operations.js";
+import { selectIsRefreshing } from "./redux/auth/selectors.js";
+import RestrictedRoute from "./components/Auth/RestrictedRoute.jsx";
+import PrivateRoute from "./components/Auth/PrivateRoute.jsx";
 
 const App = () => {
   const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUserThunk());
   }, [dispatch]);
-  const isError = useSelector(selectError);
-  const isLoading = useSelector(selectLoading);
-  return (
-    <div>
-      <h1 className={s.appTitle}>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-      {isError && (
-        <>
-          <h2>Something went wrong</h2>
-        </>
-      )}
-      {isLoading && (
-        <Triangle
-          visible={true}
-          height="80"
-          width="80"
-          color="#4fa94d"
-          ariaLabel="triangle-loading"
-          wrapperStyle={{}}
-          wrapperClass={s.wrapperTriangle}
+  return isRefreshing ? null : (
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />}></Route>
+        <Route
+          path="contacts"
+          element={
+            <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
+          }
         />
-      )}
-    </div>
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegistrationPage />}
+            />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute redirectTo="/contacts" component={<LoginPage />} />
+          }
+        />
+      </Route>
+      <Route path="*" element={<NotFound />}></Route>
+    </Routes>
   );
 };
 
