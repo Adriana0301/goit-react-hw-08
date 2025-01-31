@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { deleteContact, fetchContacts, addContact } from "./operations.js";
-// import { selectFilter } from "../filters/slice.js";
+import { logoutThunk } from "../auth/operations.js";
 
 const initialState = {
   items: [],
@@ -10,26 +10,6 @@ const initialState = {
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
-  reducers: {
-    // addContact: (state, action) => {
-    //   const exists = state.items.some(
-    //     (contact) =>
-    //       contact.name.toLowerCase() === action.payload.name.toLowerCase()
-    //   );
-    //   if (!exists) {
-    //     state.items.push({
-    //       id: nanoid(),
-    //       name: action.payload.name,
-    //       number: action.payload.number,
-    //     });
-    //   } else {
-    //     alert("Contact with this name already exists!");
-    //   }
-    // },
-    // deleteContact: (state, action) => {
-    //   state.items = state.items.filter((item) => item.id !== action.payload);
-    // },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.fulfilled, (state, action) => {
@@ -80,9 +60,13 @@ const contactsSlice = createSlice({
       .addCase(addContact.rejected, (state, action) => {
         state.error = action.payload;
         state.loading = false;
+      })
+      .addCase(logoutThunk.fulfilled, (state) => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
       });
   },
 });
 
 export const contactsReducer = contactsSlice.reducer;
-// export const { addContact } = contactsSlice.actions;

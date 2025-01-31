@@ -12,6 +12,7 @@ import { refreshUserThunk } from "./redux/auth/operations.js";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
 import RestrictedRoute from "./components/Auth/RestrictedRoute.jsx";
 import PrivateRoute from "./components/Auth/PrivateRoute.jsx";
+import { Triangle } from "react-loader-spinner";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +20,15 @@ const App = () => {
   useEffect(() => {
     dispatch(refreshUserThunk());
   }, [dispatch]);
+  if (isRefreshing) {
+    return (
+      <div
+        style={{ display: "flex", justifyContent: "center", marginTop: "50px" }}
+      >
+        <Triangle height="80" width="80" color="green" />
+      </div>
+    );
+  }
   return isRefreshing ? null : (
     <Routes>
       <Route path="/" element={<Layout />}>
